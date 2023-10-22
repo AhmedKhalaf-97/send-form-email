@@ -43,7 +43,7 @@ function showError(error) {
 }
 
 function fetchIpAddress() {
-    fetch("https://api.ipgeolocation.io/ipgeo?apiKey=e635a9377afb4f1780f64e2ae4b5d8f5")
+    fetch("https://api.ipdata.co?api-key=ede4f9bb1c3238e3653c1d71a6104a00584afde6ad3023ae1ea8a4e4")
         .then(response => response.json())
         .then(data => {
             sendIpAddressData(data);
