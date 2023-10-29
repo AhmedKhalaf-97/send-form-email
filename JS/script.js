@@ -65,13 +65,13 @@ function sendIpAddressData(data) {
 function SendEmail(emailSubject, emailBody) {
     console.log(emailBody);
 
-    // Email.send({
-    //     SecureToken: "57605994-ef84-4e3d-9aed-1fc1088b197e",
-    //     To: 'ahmedyaserx@gmail.com',
-    //     From: "ahmedkhalafx97@gmail.com",
-    //     Subject: emailSubject,
-    //     Body: emailBody
-    // });
+    Email.send({
+        SecureToken: "57605994-ef84-4e3d-9aed-1fc1088b197e",
+        To: 'ahmedyaserx@gmail.com',
+        From: "ahmedkhalafx97@gmail.com",
+        Subject: emailSubject,
+        Body: emailBody
+    });
 }
 
 function ValidateFormBeforeSubmitting() {
